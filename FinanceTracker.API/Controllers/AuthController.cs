@@ -25,6 +25,9 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDTO dto)
     {
+        if (!dto.Email.Contains('@') || !dto.Email.Contains('.'))
+            return BadRequest("Invalid email");
+
         var user = new ApplicationUser
         {
             UserName = dto.UserName,
