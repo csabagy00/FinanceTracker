@@ -9,7 +9,7 @@ namespace FinanceTracker.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(AuthenticationSchemes = "Bearer")]
 public class TransactionController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -30,7 +30,7 @@ public class TransactionController : ControllerBase
     }
 
     [HttpPost("AddTransaction")]
-    public async Task<IActionResult> CreateTransaction(Transaction transaction, string? userId1)
+    public async Task<IActionResult> CreateTransaction(Transaction transaction)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
