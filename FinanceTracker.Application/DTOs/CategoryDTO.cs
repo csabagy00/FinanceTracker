@@ -1,10 +1,10 @@
-﻿
-namespace FinanceTracker.Domain.Entities;
+﻿using FinanceTracker.Domain.Entities;
 
-public class Category
+namespace FinanceTracker.Application.DTOs;
+
+public class CategoryDTO
 {
     public Guid Id { get; set; }
-    public string UserId { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public ICollection<Transaction> Transactions { get; set; } = [];
 }
