@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest 
 
     env:
-      Jwt__Key: ${{ secrets.Jwt__Key }}
+      Jwt__Key: ${{ secrets.JWT__KEY }}
       
     steps:
     - name: Checkout
