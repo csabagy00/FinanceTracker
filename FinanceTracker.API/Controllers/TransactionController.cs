@@ -70,6 +70,7 @@ public class TransactionController : ControllerBase
 
         var category = _context.Categories.FirstOrDefault(c => c.Name == transactionDto.Category);
 
+        // Feature to automatically create a category that does not exist || To create only if the user want to else abort the creation
         if (category == null)
             return BadRequest("Category does not exist");
 
