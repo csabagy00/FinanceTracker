@@ -12,6 +12,7 @@ jobs:
 
     env:
       Jwt__Key: ${{ secrets.JWT__KEY }}
+      ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTIONSTRINGS__DEFAULTCONNECTION }}
       
     steps:
     - name: Checkout
