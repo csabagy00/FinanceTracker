@@ -1,0 +1,9 @@
+<h1>{{ title }}</h1>
+
+<p>{{ description }}</p>
+
+<p>Current balance: {{ balance }}</p>
+
+<input type="number" [(ngModel)]="amount">
+
+<button (click)="addMoney()">Add</button>
