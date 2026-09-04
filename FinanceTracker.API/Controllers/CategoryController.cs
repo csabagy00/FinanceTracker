@@ -35,6 +35,18 @@ public class CategoryController : ControllerBase
         return Ok(categories);
     }
 
+    [HttpGet("CategoryExists")]
+    public async Task<IActionResult> DoesCategoryExists(string categoryName)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        var categories = await _context.Categories.Where(c => c.UserId == userId).ToListAsync();
+
+        bool exists = categories.Any(c => c.Name == categoryName);
+
+        return Ok(exists);
+    }
+
     [HttpPost]
     public async Task<IActionResult> AddCategory(CategoryNameDTO categoryDto)
     {
@@ -51,7 +63,7 @@ public class CategoryController : ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return Ok(categoryDto);
+        return Ok(category);
     }
 
     [HttpDelete("DeleteCategory")]
