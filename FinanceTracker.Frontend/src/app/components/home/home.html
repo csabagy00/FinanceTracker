@@ -7,3 +7,17 @@
 <input type="number" [(ngModel)]="amount">
 
 <button (click)="addMoney()">Add</button>
+
+<h2>Transactions</h2>
+
+@for (transaction of transactions; track transaction.description){
+  <p>
+    {{ transaction.description }}
+
+    @if (transaction.amount >=0){
+      Income: +{{ transaction.amount }}
+    } @else {
+      Expense: {{ transaction.amount }}
+    }
+  </p>
+}
